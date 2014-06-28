@@ -33,8 +33,6 @@ public class RewardCheckerTask implements Runnable {
 	@Override
 	public void run() {
 		try {
-			System.out.println("Checking if any pending rewards on runetoplist");
-
 	        URL rtl = new URL(RuneTopList.getAPIBaseURL() + RuneTopList.SERVER_USERNAME + "/vote4rewards/status");
 	        HttpURLConnection conn = (HttpURLConnection) rtl.openConnection();
 	        conn.setReadTimeout(15 * 1000);
@@ -87,7 +85,7 @@ public class RewardCheckerTask implements Runnable {
 		}
 		
 		//adds the callback to the blocking map, key as the username
-		TaskHandler.getCallbackMap().put(username, callback);
+		callback.callback();
 	}
 
 	

@@ -26,17 +26,4 @@ public abstract class RuneTopList {
 		TaskHandler.submit(new RewardCheckerTask(username, callback));
 	}
 	
-	public static boolean runPendingCallbacks(String username, Object object){
-		RuneTopListCallback callback = TaskHandler.getCallbackMap().get(username);
-		
-		//check if there is any callbacks awaiting
-		if(callback == null){
-			return false;
-		}
-		
-		callback.callback(object);//hack to get around constraints of generic types...
-		
-		TaskHandler.getCallbackMap().remove(username);
-		return true;
-	}
 }
