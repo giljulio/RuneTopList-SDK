@@ -5,12 +5,10 @@ import java.util.concurrent.Executors;
 
 public class TaskHandler {
 
-    private static ExecutorService executor = Executors.newSingleThreadExecutor();
+    private static ExecutorService executor = Executors.newFixedThreadPool(2);
 
-    
-    //key username, value array of callbacks.
-    
-    public static void submit(Runnable runnable){
-    	executor.submit(runnable);
+    public static void submit(Runnable runnable) {
+        executor.submit(runnable);
     }
+
 }
